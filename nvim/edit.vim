@@ -163,5 +163,5 @@ set nostartofline
 " Spell Checking
 autocmd BufRead,BufNewFile *.tex setlocal spell
 
-let g:gitgutter_signs = 0
+" Use highlighting of git changes only in line numbers
 let g:gitgutter_highlight_linenrs = 1

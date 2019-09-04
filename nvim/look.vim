@@ -35,7 +35,7 @@ let g:airline#extensions#tabline#enabled = 1
 " Enable line number
 set number
 " Highlight current line
-" set cursorline
+set cursorline
 " Never show sign column
 set signcolumn=no
 highlight link GitGutterAddLineNr DiffAdd
