@@ -75,11 +75,13 @@ nnoremap <leader>g :silent grep!<Space>
 " Empty dictionary for servers
 let g:LanguageClient_serverCommands = {}
 " No virtual text
-let g:LanguageClient_useVirtualText = 0
+" let g:LanguageClient_useVirtualText = 0
 " Goto definition
 nmap <leader>d :call LanguageClient#textDocument_definition()<CR>
 " Goto type definition
 nmap <leader>t :call LanguageClient#textDocument_typeDefinition()<CR>
+" Hover
+nmap <leader>l :call LanguageClient_textDocument_hover()<CR>
 " Use location list for diagnostics
 let g:LanguageClient_diagnosticsList = "Location"
 " Function to blacklist formatting
