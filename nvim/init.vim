@@ -1,87 +1,86 @@
 call plug#begin("~/.local/share/nvim/plugged")
-
-" ------
-" Themes
-" ------
-
-" Dracula theme
 Plug 'dracula/vim'
-" Cool status bar
 Plug 'vim-airline/vim-airline'
-
-
-" ---------------
-" Edition Plugins
-" ---------------
-
-" Surround parentheses
-Plug 'tpope/vim-surround'
-" Auto close parentheses
+Plug 'machakann/vim-sandwich'
 Plug 'jiangmiao/auto-pairs'
-" Comment blocks
 Plug 'scrooloose/nerdcommenter'
-" Code completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Use tab for code completion
 Plug 'ervandew/supertab'
-" LSP client
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-" Highlighting for f<char>
-Plug 'unblevable/quick-scope'
-" Manage whitespaces
 Plug 'ntpeters/vim-better-whitespace'
-" Toggle relative/absolute line numbers
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
-
-
-" ----------------
-" Projects Plugins
-" ----------------
-
-" Explore directories
 Plug 'justinmk/vim-dirvish'
-" Show git changes
 Plug 'airblade/vim-gitgutter'
-" Managing the quickfix window
 Plug 'romainl/vim-qf'
-
-
-" -----
-" Rust
-" -----
-
 Plug 'rust-lang/rust.vim'
-
-" -----
-" Latex
-" -----
-
-Plug 'lervag/vimtex'
-
-" -----
-" Haskell
-" -----
-
-Plug 'neovimhaskell/haskell-vim'
-
-" --------
-" Markdown
-" --------
-
-Plug 'JamshedVesuna/vim-markdown-preview'
-
+Plug 'junegunn/fzf.vim'
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 call plug#end()
 
-source $HOME/.config/nvim/edit.vim
-source $HOME/.config/nvim/look.vim
-source $HOME/.config/nvim/lang/rust.vim
-source $HOME/.config/nvim/lang/python.vim
-source $HOME/.config/nvim/lang/haskell.vim
+colorscheme dracula
+set termguicolors
 
-let g:tex_flavor = "latex"
+nnoremap o o<Esc>
+let mapleader=","
+set expandtab
+set smarttab
 
-call deoplete#custom#var('omni', 'input_patterns', {
-      \ 'tex': g:vimtex#re#deoplete
-      \})
+set hidden
+noremap <A-Left> :bp<CR>
+noremap <A-Right> :bn<CR>
+noremap <A-Down> <C-W><C-J>
+noremap <A-Up> <C-W><C-K>
+noremap <A-Del> :bw<CR>
 
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDDefaultAlign = "left"
+map <F2> <Plug>NERDCommenterToggle
+set incsearch
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+
+let g:LanguageClient_serverCommands = {}
+nmap <leader>d :call LanguageClient#textDocument_definition()<CR>
+nmap <leader>t :call LanguageClient#textDocument_typeDefinition()<CR>
+nmap <leader>r :call LanguageClient_textDocument_references()<CR>
+nmap <leader>m :call LanguageClient_textDocument_hover()<CR>
+nmap <leader>n <Plug>(qf_loc_next)
+nmap <leader>p <Plug>(qf_loc_previous)
+nmap <F3> <Plug>(qf_loc_toggle)
+nmap <F4> <Plug>(qf_qf_toggle)
+
+let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
+
+set undofile
+set undodir=~/.undodir
+set nobackup
+set noswapfile
+set clipboard+=unnamedplus
+set whichwrap+=<,>,[,]
+set nostartofline
+let g:gitgutter_highlight_linenrs = 1
+syntax on
+set showmatch
+let g:airline_powerline_fonts = 1
+let g:deoplete#enable_at_startup = 1
+let g:airline#extensions#tabline#enabled = 1
+set number
+set cursorline
+set signcolumn=no
+highlight link GitGutterAddLineNr DiffAdd
+highlight link GitGutterChangeLineNr DiffChange
+highlight link GitGutterDeleteLineNr DiffDelete
+highlight link GitGutterChangeDeleteLineNr DiffChange
+if executable("rls")
+    let g:LanguageClient_serverCommands["rust"] = ["rls"]
+endif
+
+let g:LanguageClient_fzfOptions=['--preview-window', 'right:50%', '--preview', '''/home/freyja/.local/share/nvim/plugged/fzf.vim/bin/preview.sh'' {}', '--bind', '?:toggle-preview']
+
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+"
 hi Normal guibg=NONE ctermbg=NONE
