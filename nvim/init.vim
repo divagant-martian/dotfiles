@@ -50,6 +50,7 @@ nmap <leader>d :call LanguageClient#textDocument_definition()<CR>
 nmap <leader>t :call LanguageClient#textDocument_typeDefinition()<CR>
 nmap <leader>r :call LanguageClient_textDocument_references()<CR>
 nmap <leader>m :call LanguageClient_textDocument_hover()<CR>
+nnoremap <F5> :call LanguageClient#textDocument_formatting_sync()<CR>
 nmap <leader>n <Plug>(qf_loc_next)
 nmap <leader>p <Plug>(qf_loc_previous)
 nmap <F3> <Plug>(qf_loc_toggle)
@@ -87,12 +88,14 @@ highlight link GitGutterChangeDeleteLineNr DiffChange
 if executable("rls")
     let g:LanguageClient_serverCommands["rust"] = ["rls"]
 endif
+let g:LanguageClient_serverCommands["python"] = ["pyls"]
 
 " let g:fzf_layout = { 'window': 'enew' }
 let g:LanguageClient_fzfOptions=[ '--height', '40%', '--preview-window', 'wrap:right:50%', '--preview', '''/home/freyja/.local/share/nvim/plugged/fzf.vim/bin/preview.sh'' {}', '--bind', '?:toggle-preview']
 set foldmethod=syntax
 set foldlevelstart=20
 nmap <Space> za
+set completeopt-=preview
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
