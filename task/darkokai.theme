@@ -1,0 +1,111 @@
+###############################################################################
+#
+# Copyright 2006 - 2016, Paul Beckingham, Federico Hernandez.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#
+# http://www.opensource.org/licenses/mit-license.php
+#
+###############################################################################
+
+rule.precedence.color=completed,deleted,active,tag.next,overdue,recurring,due.today
+
+# 186
+# 215
+# 197
+# 213
+# 141
+# 45
+# 86
+# 77
+# 59
+
+
+# This is a theme that disables all default colors
+# It can be used as template for other themes
+
+# General decoration
+color.label=color37
+color.label.sort=color37
+color.alternate=on gray3
+color.header=color45
+color.footnote=color141
+color.warning=color215
+color.error=color197
+color.debug=
+
+# Task state
+color.completed=color141
+color.deleted=color17
+color.active=inverse
+color.recurring=color86
+color.scheduled=
+color.until=
+color.blocked=
+color.blocking=
+
+# Project
+color.project.none=
+
+# Priority
+color.uda.priority.H=
+color.uda.priority.L=
+color.uda.priority.M=
+
+# Tags
+color.tag.next=color197
+color.tag.none=
+color.tagged=
+
+# Due
+color.due=
+color.due.today=color77
+color.overdue=color215
+
+# Report: burndown
+color.burndown.done=on color59
+color.burndown.pending=on color86
+color.burndown.started=on color197
+
+# Report: history
+color.history.add=inverse color141
+color.history.delete=on color17
+color.history.done=inverse color86
+
+# Report: summary
+color.summary.background=on color59
+color.summary.bar=on color77
+
+# Command: calendar
+color.calendar.due=inverse color213
+color.calendar.due.today=
+color.calendar.holiday=
+color.calendar.overdue=inverse color215
+color.calendar.today=on color197
+color.calendar.weekend=color17
+color.calendar.weeknumber=gray10
+
+# Command: sync
+color.sync.added=
+color.sync.changed=
+color.sync.rejected=
+
+# Command: undo
+color.undo.after=inverse color77
+color.undo.before=inverse color141
