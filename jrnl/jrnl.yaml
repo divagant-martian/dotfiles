@@ -1,0 +1,27 @@
+default_hour: 23
+default_minute: 30
+editor: nvim
+encrypt: false
+highlight: true
+indent_character: '|'
+journals:
+  default:
+    encrypt: true
+    journal: /home/freyja/.local/jrnl/journal.txt
+  recetas:
+    encrypt: false
+    journal: /home/freyja/.local/jrnl/recetas.txt
+  tesis:
+    encrypt: false
+    journal: /home/freyja/.local/jrnl/tesis.txt
+  we:
+    encrypt: false
+    journal: /home/freyja/.local/jrnl/we.txt
+  work:
+    encrypt: false
+    journal: /home/freyja/.local/jrnl/work.txt
+linewrap: 79
+tagsymbols: '@'
+template: false
+timeformat: '%Y-%m-%d %H:%M'
+version: v2.0.1
