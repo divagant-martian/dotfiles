@@ -1,5 +1,6 @@
 call plug#begin("~/.local/share/nvim/plugged")
 Plug 'dracula/vim'
+Plug 'sickill/vim-monokai'
 Plug 'vim-airline/vim-airline'
 Plug 'machakann/vim-sandwich'
 Plug 'jiangmiao/auto-pairs'
@@ -15,9 +16,12 @@ Plug 'rust-lang/rust.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'lervag/vimtex'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'yous/vim-open-color'
+Plug 'kamykn/dark-theme.vim'
 call plug#end()
 
-colorscheme dracula
+colorscheme open-color
 set termguicolors
 
 nnoremap o o<Esc>
@@ -96,6 +100,10 @@ set foldmethod=syntax
 set foldlevelstart=20
 nmap <Space> za
 set completeopt-=preview
+augroup quickfix
+    autocmd!
+    autocmd FileType qf setlocal wrap
+augroup END
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
@@ -103,3 +111,5 @@ command! -bang -nargs=* Rg
   \   fzf#vim#with_preview(), <bang>0)
 "
 hi Normal guibg=NONE ctermbg=NONE
+
+let g:omni_sql_no_default_maps = 1
