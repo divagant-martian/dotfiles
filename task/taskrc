@@ -33,8 +33,4 @@ color.tag.STUD=rgb155
 color.blocking=
 
 report.next.filter=status:pending +UNBLOCKED limit:page
-include /home/freyja/dotfiles/task/darkokai.theme
-include /home/freyja/dotfiles/task/darkokai.theme
-include /home/freyja/dotfiles/task/darkokai.theme
-include /home/freyja/dotfiles/task/darkokai.theme
-include /home/freyja/dotfiles/task/darkokai.theme
+include /home/freyja/Documents/dotfiles/task/darkokai.theme

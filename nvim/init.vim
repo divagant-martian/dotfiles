@@ -50,14 +50,20 @@ set incsearch
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
 let g:LanguageClient_serverCommands = {}
+let g:LanguageClient_diagnosticsDisplay = {}
+let g:LanguageClient_diagnosticsDisplay.1 = {"name": "Error", "texthl": "LSPDiagnosticsError"}
+let g:LanguageClient_diagnosticsDisplay.2 = {"name": "Warning", "texthl": "LSPDiagnosticsWarning"}
+let g:LanguageClient_diagnosticsDisplay.3 = {"name": "Information", "texthl": "LSPDiagnosticsInformation"}
+let g:LanguageClient_diagnosticsDisplay.4 = {"name": "Hint", "texthl": "LSPDiagnosticsHint"}
 nmap <leader>d :call LanguageClient#textDocument_definition()<CR>
 nmap <leader>t :call LanguageClient#textDocument_typeDefinition()<CR>
 nmap <leader>r :call LanguageClient_textDocument_references()<CR>
 nmap <leader>m :call LanguageClient_textDocument_hover()<CR>
 nnoremap <F5> :call LanguageClient#textDocument_formatting_sync()<CR>
-nmap <leader>n <Plug>(qf_loc_next)
-nmap <leader>p <Plug>(qf_loc_previous)
-nmap <F3> <Plug>(qf_loc_toggle)
+
+
+nmap <leader>n <Plug>(qf_qf_next)
+nmap <leader>p <Plug>(qf_qf_previous)
 nmap <F4> <Plug>(qf_qf_toggle)
 
 let g:strip_whitespace_on_save=1
