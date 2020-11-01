@@ -19,6 +19,7 @@ Plug 'lervag/vimtex'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'yous/vim-open-color'
 Plug 'kamykn/dark-theme.vim'
+Plug 'alaviss/nim.nvim'
 call plug#end()
 
 colorscheme open-color
@@ -45,6 +46,8 @@ noremap <A-Del> :bw<CR>
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDDefaultAlign = "left"
+let g:rustfmt_autosave = 1
+
 map <F2> <Plug>NERDCommenterToggle
 set incsearch
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
