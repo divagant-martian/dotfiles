@@ -46,7 +46,6 @@ noremap <A-Del> :bw<CR>
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDDefaultAlign = "left"
-let g:rustfmt_autosave = 1
 
 map <F2> <Plug>NERDCommenterToggle
 set incsearch
@@ -62,6 +61,7 @@ nmap <leader>d :call LanguageClient#textDocument_definition()<CR>
 nmap <leader>t :call LanguageClient#textDocument_typeDefinition()<CR>
 nmap <leader>r :call LanguageClient_textDocument_references()<CR>
 nmap <leader>m :call LanguageClient_textDocument_hover()<CR>
+nmap <leader>n :call LanguageClient_textDocument_rename()<CR>
 nnoremap <F5> :call LanguageClient#textDocument_formatting_sync()<CR>
 
 
@@ -103,6 +103,7 @@ if executable("rls")
 endif
 let g:LanguageClient_serverCommands["python"] = ["pyls"]
 
+
 " let g:fzf_layout = { 'window': 'enew' }
 let g:LanguageClient_fzfOptions=[ '--height', '40%', '--preview-window', 'wrap:right:50%', '--preview', '''/home/freyja/.local/share/nvim/plugged/fzf.vim/bin/preview.sh'' {}', '--bind', '?:toggle-preview']
 set foldmethod=syntax
@@ -122,3 +123,4 @@ command! -bang -nargs=* Rg
 hi Normal guibg=NONE ctermbg=NONE
 
 let g:omni_sql_no_default_maps = 1
+set spell
