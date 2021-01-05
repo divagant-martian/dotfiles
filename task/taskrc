@@ -34,3 +34,4 @@ color.blocking=
 
 report.next.filter=status:pending +UNBLOCKED limit:page
 include /home/freyja/Documents/dotfiles/task/darkokai.theme
+verbose=blank,footnote,label,new-id,new-uuid,affected,edit,special,project,sync,unwait,recur
