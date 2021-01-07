@@ -1,0 +1,6 @@
+[Unit]
+Description=NIE
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/firefox --new-window "https://sede.administracionespublicas.gob.es/icpplustiem/citar?p=28&locale=es"
