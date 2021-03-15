@@ -1,6 +1,0 @@
-[Unit]
-Description=Check task
-
-[Service]
-Type=simple
-ExecStart=/usr/bin/terminator --new-tab --command 'task rc.detection:off rc._forcecolor:on rc.defaultwidth:80 rc.reserved.lines:10 burndown.weekly; task; $SHELL'

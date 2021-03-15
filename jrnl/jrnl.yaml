@@ -12,19 +12,16 @@ indent_character: '|'
 journals:
   default:
     encrypt: true
-    journal: /home/freyja/.local/jrnl/journal.txt
+    journal: /home/$USER/.local/jrnl/journal.txt
   recetas:
     encrypt: false
-    journal: /home/freyja/.local/jrnl/recetas.txt
-  tesis:
-    encrypt: false
-    journal: /home/freyja/.local/jrnl/tesis.txt
+    journal: /home/$USER/.local/jrnl/recetas.txt
   we:
     encrypt: false
-    journal: /home/freyja/.local/jrnl/we.txt
+    journal: /home/$USER/.local/jrnl/we.txt
   work:
     encrypt: false
-    journal: /home/freyja/.local/jrnl/work.txt
+    journal: /home/$USER/.local/jrnl/work.txt
 linewrap: 79
 tagsymbols: '@'
 template: false

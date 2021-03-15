@@ -1,5 +1,4 @@
 #!/bin/sh
-rm -r ~/.config/nvim
-# pikaur -S neovim-plug
-# pip install --user --force pynvim msgpack
+rm -rf ~/.config/nvim
 ln -sf $(pwd)/nvim ~/.config/nvim
+echo 'falta instalar plug según https://github.com/junegunn/vim-plug y luego :PlugInstall'

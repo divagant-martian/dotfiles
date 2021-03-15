@@ -52,11 +52,6 @@ set incsearch
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 
 let g:LanguageClient_serverCommands = {}
-let g:LanguageClient_diagnosticsDisplay = {}
-let g:LanguageClient_diagnosticsDisplay.1 = {"name": "Error", "texthl": "LSPDiagnosticsError"}
-let g:LanguageClient_diagnosticsDisplay.2 = {"name": "Warning", "texthl": "LSPDiagnosticsWarning"}
-let g:LanguageClient_diagnosticsDisplay.3 = {"name": "Information", "texthl": "LSPDiagnosticsInformation"}
-let g:LanguageClient_diagnosticsDisplay.4 = {"name": "Hint", "texthl": "LSPDiagnosticsHint"}
 nmap <leader>d :call LanguageClient#textDocument_definition()<CR>
 nmap <leader>t :call LanguageClient#textDocument_typeDefinition()<CR>
 nmap <leader>r :call LanguageClient_textDocument_references()<CR>
@@ -99,10 +94,9 @@ highlight link GitGutterChangeLineNr DiffChange
 highlight link GitGutterDeleteLineNr DiffDelete
 highlight link GitGutterChangeDeleteLineNr DiffChange
 if executable("rls")
-    let g:LanguageClient_serverCommands["rust"] = ["rls"]
+    let g:LanguageClient_serverCommands["rust"] = ["rustup", "run", "stable", "rls"]
 endif
 let g:LanguageClient_serverCommands["python"] = ["pyls"]
-
 
 " let g:fzf_layout = { 'window': 'enew' }
 let g:LanguageClient_fzfOptions=[ '--height', '40%', '--preview-window', 'wrap:right:50%', '--preview', '''/home/freyja/.local/share/nvim/plugged/fzf.vim/bin/preview.sh'' {}', '--bind', '?:toggle-preview']
