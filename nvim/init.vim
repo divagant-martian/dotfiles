@@ -16,7 +16,18 @@ call plug#begin("~/.local/share/nvim/plugged")
     Plug 'neovim/nvim-lspconfig'
     " View git changes in vim
     Plug 'airblade/vim-gitgutter'
+    " Nice popup window
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    " Better syntax highlighting
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " Color scheme
+    Plug 'sjl/badwolf'
 call plug#end()
+
+
+colorscheme badwolf
 
 " Comments
 map <F2> <Plug>NERDCommenterToggle
@@ -48,7 +59,8 @@ let g:airline_powerline_fonts = 1
 syntax enable "Needed to check only comments, docs and strings
 set spell
 
-nmap o o<Esc>
+nnoremap o o<Esc>
+let mapleader=","
 set termguicolors
 
 " Less files
@@ -59,6 +71,48 @@ set noswapfile
 set undofile
 set undodir=~/.undodir
 
+" View git changes
+set number
+set signcolumn=no
+let g:gitgutter_highlight_linenrs = 1
+highlight link GitGutterAddLineNr DiffAdd
+highlight link GitGutterChangeLineNr DiffChange
+highlight link GitGutterDeleteLineNr DiffDelete
+highlight link GitGutterChangeDeleteLineNr DiffChange
+
 " Clipboard with the outside world
 set clipboard+=unnamedplus
+
+lua require('keys')
+
+" Buffer navigation
+set hidden
+noremap <A-Left> :bp<CR>
+noremap <A-Right> :bn<CR>
+noremap <A-Down> <C-W><C-J>
+noremap <A-Up> <C-W><C-K>
+noremap <A-Del> :bw<CR>
+
+" rust LSP
+lua <<EOF
+require 'lspconfig'.rls.setup {
+  settings = {
+    rust = {
+      unstable_features = true,
+      build_on_save = false,
+      all_features = true,
+    },
+  },
+}
+EOF
+
+" Treesitter config
+lua <<EOF
+    require'nvim-treesitter.configs'.setup {
+        ensure_installed = {"rust", "comment"},
+        highlight = {
+    enable = true,              -- false will disable the whole extension
+    },
+}
+EOF
 
