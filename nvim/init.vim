@@ -26,9 +26,6 @@ call plug#begin("~/.local/share/nvim/plugged")
     Plug 'sjl/badwolf'
 call plug#end()
 
-
-colorscheme badwolf
-
 " Comments
 map <F2> <Plug>NERDCommenterToggle
 let g:NERDSpaceDelims = 1
@@ -116,3 +113,10 @@ lua <<EOF
 }
 EOF
 
+" Colors. This needs to be at the end, in this order.
+colorscheme badwolf
+hi Normal guibg=NONE ctermbg=NONE
+hi DiffAdd      gui=none    guibg=NONE          guifg=#aaf6b1
+hi DiffChange   gui=none    guibg=NONE          guifg=#e2b870
+hi DiffDelete   gui=none    guibg=NONE          guifg=#ef5350
+hi DiffText     gui=none    guibg=NONE          guifg=fg
