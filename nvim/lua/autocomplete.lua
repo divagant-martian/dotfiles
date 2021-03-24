@@ -23,3 +23,4 @@ require'compe'.setup {
 }
 
 vim.o.completeopt = "menuone,noselect"
+vim.api.nvim_set_var('SuperTabDefaultCompletionType', '<c-n>')
