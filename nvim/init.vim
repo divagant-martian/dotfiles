@@ -24,6 +24,9 @@ call plug#begin("~/.local/share/nvim/plugged")
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     " Color scheme
     Plug 'sjl/badwolf'
+    " Autocomplete
+    Plug 'hrsh7th/nvim-compe'
+    Plug 'ervandew/supertab'
 call plug#end()
 
 " Comments
@@ -52,9 +55,9 @@ set cursorline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-" Spell checking
-syntax enable "Needed to check only comments, docs and strings
-set spell
+" Spell checking. Treesitter messes around with this
+" syntax enable "Needed to check only comments, docs and strings
+" set spell
 
 nnoremap o o<Esc>
 let mapleader=","
@@ -77,10 +80,18 @@ highlight link GitGutterChangeLineNr DiffChange
 highlight link GitGutterDeleteLineNr DiffDelete
 highlight link GitGutterChangeDeleteLineNr DiffChange
 
+" Folding
+set foldmethod=syntax
+set foldlevelstart=20
+nmap <Space> za
+
+
 " Clipboard with the outside world
 set clipboard+=unnamedplus
 
 lua require('keys')
+lua require('lsp')
+lua require('autocomplete')
 
 " Buffer navigation
 set hidden
@@ -91,17 +102,17 @@ noremap <A-Up> <C-W><C-K>
 noremap <A-Del> :bw<CR>
 
 " rust LSP
-lua <<EOF
-require 'lspconfig'.rls.setup {
-  settings = {
-    rust = {
-      unstable_features = true,
-      build_on_save = false,
-      all_features = true,
-    },
-  },
-}
-EOF
+" lua <<EOF
+" require 'lspconfig'.rls.setup {
+"   settings = {
+"     rust = {
+"       unstable_features = true,
+"       build_on_save = false,
+"       all_features = true,
+"     },
+"   },
+" }
+" EOF
 
 " Treesitter config
 lua <<EOF
