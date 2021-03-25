@@ -25,9 +25,14 @@ call plug#begin("~/.local/share/nvim/plugged")
     " Color scheme
     Plug 'sjl/badwolf'
     " Autocomplete
+    " Plug 'nvim-lua/completion-nvim'
     Plug 'hrsh7th/nvim-compe'
-    Plug 'ervandew/supertab'
+    Plug 'hrsh7th/vim-vsnip'
+    " Plug 'ervandew/supertab'
 call plug#end()
+
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 
 " Comments
 map <F2> <Plug>NERDCommenterToggle
@@ -80,12 +85,6 @@ highlight link GitGutterChangeLineNr DiffChange
 highlight link GitGutterDeleteLineNr DiffDelete
 highlight link GitGutterChangeDeleteLineNr DiffChange
 
-" Folding
-set foldmethod=syntax
-set foldlevelstart=20
-nmap <Space> za
-
-
 " Clipboard with the outside world
 set clipboard+=unnamedplus
 
@@ -123,6 +122,12 @@ lua <<EOF
     },
 }
 EOF
+
+" Folding with Treesitter
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldlevelstart=20
+nmap <Space> za
 
 " Colors. This needs to be at the end, in this order.
 colorscheme badwolf

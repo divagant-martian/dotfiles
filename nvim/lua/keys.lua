@@ -31,15 +31,6 @@ vim.api.nvim_set_keymap('', '<leader>b', '"_', {})
 vim.api.nvim_set_keymap('', '<BS>', '"_d', {})
 
 
--- Code Completion
-
--- use Tab and S-Tab to traverse completions
--- vim.api.nvim_set_keymap('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', { noremap = true, expr = true })
--- vim.api.nvim_set_keymap('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', { noremap = true, expr = true })
-
-
--- Quickfix
-
 -- Language Server Protocol
 
 -- go to definition
@@ -58,5 +49,5 @@ vim.api.nvim_set_keymap('n', '<leader>r', '<cmd>Telescope lsp_references<CR>', {
 -- show diagnostics
 vim.api.nvim_set_keymap('n', '<leader>w', '<cmd>Telescope lsp_workspace_diagnostics<CR>', { noremap = true, silent = true })
 -- show code actions
--- vim.api.nvim_set_keymap('n', '<leader><space>', '<cmd>Telescope lsp_code_actions<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader><space>', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><space>', '<cmd>Telescope lsp_code_actions<CR>', { noremap = true, silent = true })
+

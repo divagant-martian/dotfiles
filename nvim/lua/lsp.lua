@@ -1,32 +1,16 @@
-local nvim_lsp = require'lspconfig'
+-- Snipets: cool autocomplete
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- local on_attach = function(client)
---     require'completion'.on_attach(client)
--- end
-
-nvim_lsp.rust_analyzer.setup({
-        ["rust-analyzer"] = {
-            rustcSource = "discover",
-            cargo = {
-                loadOutDirsFromCheck = true
-            },
-            procMacro = {
-                enable = true
-            },
-        }
-    -- on_attach=on_attach,
-    -- settings = {
-        -- ["rust-analyzer"] = {
-            -- assist = {
-            --     importMergeBehavior = "last",
-            --     importPrefix = "by_self",
-            -- },
-            -- cargo = {
-            --     loadOutDirsFromCheck = true
-            -- },
-            -- procMacro = {
-            --     enable = true
-            -- },
-        -- }
-    -- }
+require('lspconfig').rust_analyzer.setup({
+    capabilities = capabilities,
+    ["rust-analyzer"] = {
+        rustcSource = "discover",
+        cargo = {
+            loadOutDirsFromCheck = true
+        },
+        procMacro = {
+            enable = true
+        },
+    }
 })
