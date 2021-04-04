@@ -41,13 +41,21 @@ vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>lua vim.lsp.buf.type_definition(
 vim.api.nvim_set_keymap('n', '<leader>m', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
 -- format the current buffer
 vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', { noremap = true, silent = true })
+-- show diagnostics for the current line
+vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { noremap = true, silent = true })
+-- rename
+vim.api.nvim_set_keymap('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
+-- next diagnostic in current buffer
+vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
+-- previous diagnostic in current buffer
+vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
 
 -- Telescope
 
 -- show references
 vim.api.nvim_set_keymap('n', '<leader>r', '<cmd>Telescope lsp_references<CR>', { noremap = true, silent = true })
 -- show diagnostics
-vim.api.nvim_set_keymap('n', '<leader>w', '<cmd>Telescope lsp_workspace_diagnostics<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>lua require('telescope_configed').lsp_workspace_diagnostics_with_map()<CR>", {noremap = true, silent = true})
 -- show code actions
 vim.api.nvim_set_keymap('n', '<leader><space>', '<cmd>Telescope lsp_code_actions<CR>', { noremap = true, silent = true })
 

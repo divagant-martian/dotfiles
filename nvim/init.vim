@@ -8,8 +8,8 @@ call plug#begin("~/.local/share/nvim/plugged")
     Plug 'ntpeters/vim-better-whitespace'
     " The pair sandwich
     Plug 'machakann/vim-sandwich'
-    " Highlight pairs
-    Plug 'jiangmiao/auto-pairs'
+    " Autoclose pairs
+    Plug 'cohama/lexima.vim'
     " Show me tabs
     Plug 'vim-airline/vim-airline'
     " Default profiles for LSP
@@ -31,8 +31,11 @@ call plug#begin("~/.local/share/nvim/plugged")
     " Plug 'ervandew/supertab'
 call plug#end()
 
+" Lexima + compe
+let g:lexima_no_default_rules = v:true
+call lexima#set_default_rules()
 inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <CR>      compe#confirm(lexima#expand('<LT>CR>', 'i'))
 
 " Comments
 map <F2> <Plug>NERDCommenterToggle
@@ -88,9 +91,10 @@ highlight link GitGutterChangeDeleteLineNr DiffChange
 " Clipboard with the outside world
 set clipboard+=unnamedplus
 
-lua require('keys')
 lua require('lsp')
 lua require('autocomplete')
+lua require('telescope_configed')
+lua require('keys')
 
 " Buffer navigation
 set hidden
@@ -136,3 +140,5 @@ hi DiffAdd      gui=none    guibg=NONE          guifg=#aaf6b1
 hi DiffChange   gui=none    guibg=NONE          guifg=#e2b870
 hi DiffDelete   gui=none    guibg=NONE          guifg=#ef5350
 hi DiffText     gui=none    guibg=NONE          guifg=fg
+
+autocmd User TelescopePreviewerLoaded setlocal wrap
