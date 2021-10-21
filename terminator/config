@@ -1,0 +1,82 @@
+[global_config]
+  borderless = True
+  extra_styling = False
+  handle_size = 0
+  homogeneous_tabbar = False
+  scroll_tabbar = True
+  tab_position = hidden
+  title_hide_sizetext = True
+  title_transmit_bg_color = "#8ae234"
+  window_state = maximise
+[keybindings]
+  broadcast_all = None
+  broadcast_group = None
+  broadcast_off = None
+  edit_tab_title = None
+  edit_terminal_title = None
+  edit_window_title = None
+  go_down = <Primary>braceleft
+  go_left = <Primary>ntilde
+  go_next = None
+  go_prev = None
+  go_right = <Primary>braceright
+  go_up = <Primary>dead_acute
+  group_all = None
+  group_tab = None
+  hide_window = None
+  insert_number = None
+  insert_padded = None
+  layout_launcher = None
+  move_tab_left = None
+  move_tab_right = None
+  new_tab = <Primary>k
+  new_terminator = None
+  new_window = None
+  next_profile = None
+  next_tab = <Primary><Shift>Right
+  prev_tab = <Primary><Shift>Left
+  reset = None
+  reset_clear = None
+  resize_down = None
+  resize_left = <Primary><Shift>ntilde
+  resize_right = <Primary><Shift>bracketright
+  resize_up = <Primary><Shift>dead_diaeresis
+  rotate_ccw = None
+  rotate_cw = None
+  split_horiz = <Primary><Shift>t
+  split_vert = <Primary>t
+  switch_to_tab_1 = <Alt>1
+  switch_to_tab_2 = <Alt>2
+  switch_to_tab_3 = <Alt>3
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 40a550d5-28aa-4bbc-8640-7004b6d44dd3
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1366, 743
+      title = fish /home/freyja
+      type = Window
+    [[[terminal1]]]
+      order = 0
+      parent = child0
+      profile = default
+      type = Terminal
+      uuid = 40a550d5-28aa-4bbc-8640-7004b6d44dd3
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.65
+    background_type = transparent
+    copy_on_selection = True
+    cursor_color = "#aaaaaa"
+    font = Fira Code 10
+    rewrap_on_resize = False
+    scrollback_lines = 5000
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False

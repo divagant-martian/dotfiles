@@ -58,4 +58,14 @@ vim.api.nvim_set_keymap('n', '<leader>r', '<cmd>Telescope lsp_references<CR>', {
 vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>lua require('telescope_configed').lsp_workspace_diagnostics_with_map()<CR>", {noremap = true, silent = true})
 -- show code actions
 vim.api.nvim_set_keymap('n', '<leader><space>', '<cmd>Telescope lsp_code_actions<CR>', { noremap = true, silent = true })
+-- spell suggestions
+vim.api.nvim_set_keymap('n', '<leader>s', '<cmd>Telescope spell_suggest<CR>', { noremap = true, silent = true })
 
+-- Floating terminal
+vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
+vim.api.nvim_set_keymap('t', '<F3>', '<C-\\><C-n>:FloatermToggle<CR>', { noremap = true })
+vim.api.nvim_set_keymap('', '<F3>', ':FloatermToggle<CR>', { noremap = true })
+-- Open the terminal as a split
+vim.api.nvim_set_var('floaterm_wintype', 'split')
+-- Set height of the terminal
+vim.api.nvim_set_var('floaterm_height', 0.4)

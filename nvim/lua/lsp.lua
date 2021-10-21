@@ -4,13 +4,23 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require('lspconfig').rust_analyzer.setup({
     capabilities = capabilities,
-    ["rust-analyzer"] = {
-        rustcSource = "discover",
-        cargo = {
-            loadOutDirsFromCheck = true
-        },
-        procMacro = {
-            enable = true
-        },
+    settings = {
+        ["rust-analyzer"] = {
+            rustcSource = "discover",
+            procMacro = {
+                enable = true
+            },
+            completion = {
+                snippets = {
+                    arc = {
+                        postfix = "arc",
+                        body = "Arc::new(${receiver})",
+                        scope = "expr",
+                        requires = "std::sync::Arc",
+                    }
+                }
+            },
+        }
+
     }
 })

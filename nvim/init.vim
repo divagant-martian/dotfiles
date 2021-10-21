@@ -1,7 +1,7 @@
 " Plugs
 call plug#begin("~/.local/share/nvim/plugged")
     " Smart comments
-	Plug 'scrooloose/nerdcommenter'
+    Plug 'scrooloose/nerdcommenter'
     " Directory navigation
     Plug 'justinmk/vim-dirvish'
     " Nobody likes whitespace changes
@@ -25,10 +25,9 @@ call plug#begin("~/.local/share/nvim/plugged")
     " Color scheme
     Plug 'sjl/badwolf'
     " Autocomplete
-    " Plug 'nvim-lua/completion-nvim'
     Plug 'hrsh7th/nvim-compe'
     Plug 'hrsh7th/vim-vsnip'
-    " Plug 'ervandew/supertab'
+    Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 " Lexima + compe
@@ -104,18 +103,8 @@ noremap <A-Down> <C-W><C-J>
 noremap <A-Up> <C-W><C-K>
 noremap <A-Del> :bw<CR>
 
-" rust LSP
-" lua <<EOF
-" require 'lspconfig'.rls.setup {
-"   settings = {
-"     rust = {
-"       unstable_features = true,
-"       build_on_save = false,
-"       all_features = true,
-"     },
-"   },
-" }
-" EOF
+nnoremap <A-t> A<CR>// TODO:
+inoremap <A-t> <Esc>A<CR>// TODO:
 
 " Treesitter config
 lua <<EOF

@@ -33,5 +33,9 @@ color.tag.STUD=rgb155
 color.blocking=
 
 report.next.filter=status:pending +UNBLOCKED limit:page
-include /home/freyja/Documents/dotfiles/task/darkokai.theme
 verbose=blank,footnote,label,new-id,new-uuid,affected,edit,special,project,sync,unwait,recur
+include /home/freyja/Documents/github/dotfiles/task/darkokai.theme
+alias.note=annotate
+#detection=off
+#defaultheight=30
+#defaultwidth=95
