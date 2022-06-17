@@ -1,8 +1,9 @@
 -- Snipets: cool autocomplete
+local lspconfig = require 'lspconfig'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require('lspconfig').rust_analyzer.setup({
+lspconfig.rust_analyzer.setup({
     capabilities = capabilities,
     settings = {
         ["rust-analyzer"] = {
@@ -23,4 +24,16 @@ require('lspconfig').rust_analyzer.setup({
         }
 
     }
+})
+
+lspconfig.gopls.setup({
+    cmd = {'gopls', '--remote=auto'},
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+        },
+    },
 })

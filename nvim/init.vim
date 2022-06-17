@@ -20,8 +20,11 @@ call plug#begin("~/.local/share/nvim/plugged")
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope-ui-select.nvim'
     " Better syntax highlighting
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " spelling with Treesitter
+    Plug 'lewis6991/spellsitter.nvim'
     " Color scheme
     Plug 'sjl/badwolf'
     " Autocomplete
@@ -94,6 +97,7 @@ lua require('lsp')
 lua require('autocomplete')
 lua require('telescope_configed')
 lua require('keys')
+lua require('spellsitter').setup()
 
 " Buffer navigation
 set hidden
@@ -131,3 +135,8 @@ hi DiffDelete   gui=none    guibg=NONE          guifg=#ef5350
 hi DiffText     gui=none    guibg=NONE          guifg=fg
 
 autocmd User TelescopePreviewerLoaded setlocal wrap
+autocmd BufNewFile,BufRead *.jrnl set syntax=markdown
+autocmd BufNewFile,BufRead *.jrnl set tabstop=2
+autocmd BufNewFile,BufRead *.jrnl set shiftwidth=2
+
+autocmd BufRead,BufNewFile *.htm,*.html,*.js,*.css setlocal tabstop=2 shiftwidth=2 softtabstop=2

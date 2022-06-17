@@ -39,3 +39,6 @@ alias.note=annotate
 #detection=off
 #defaultheight=30
 #defaultwidth=95
+news.version=2.6.0
+context.work.read=+work
+context.work.write=+work due:7d

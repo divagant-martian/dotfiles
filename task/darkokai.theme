@@ -79,8 +79,8 @@ color.due.today=color77
 color.overdue=color215
 
 # Report: burndown
-color.burndown.done=on color59
-color.burndown.pending=on color86
+color.burndown.done=on color86
+color.burndown.pending=on color59
 color.burndown.started=on color197
 
 # Report: history

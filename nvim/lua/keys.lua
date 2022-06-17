@@ -36,7 +36,8 @@ vim.api.nvim_set_keymap('', '<BS>', '"_d', {})
 -- go to definition
 vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 -- go to type definition
-vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>Telescope lsp_type_definitions<CR>', { noremap = true, silent = true })
 -- show hover information
 vim.api.nvim_set_keymap('n', '<leader>m', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
 -- format the current buffer
@@ -55,9 +56,9 @@ vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>lua vim.lsp.diagnostic.goto_prev
 -- show references
 vim.api.nvim_set_keymap('n', '<leader>r', '<cmd>Telescope lsp_references<CR>', { noremap = true, silent = true })
 -- show diagnostics
-vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>lua require('telescope_configed').lsp_workspace_diagnostics_with_map()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>Telescope diagnostics<CR>", {noremap = true, silent = true})
 -- show code actions
-vim.api.nvim_set_keymap('n', '<leader><space>', '<cmd>Telescope lsp_code_actions<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><space>', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
 -- spell suggestions
 vim.api.nvim_set_keymap('n', '<leader>s', '<cmd>Telescope spell_suggest<CR>', { noremap = true, silent = true })
 
