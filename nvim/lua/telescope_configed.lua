@@ -34,7 +34,13 @@ require("telescope").setup {
     -- Default configuration for builtin pickers goes here:
     lsp_type_definitions = {
       jump_type = "never",
-      layout_config = { scroll_speed = 1, preview_width = 100 },
+      layout_strategy = "vertical",
+      layout_config = { scroll_speed = 1, width = 100, preview_height = 0.8 },
+    },
+    lsp_definitions = {
+      jump_type = "never",
+      layout_strategy = "vertical",
+      layout_config = { scroll_speed = 1, width = 100, preview_height = 0.8 },
     },
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker

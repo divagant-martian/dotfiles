@@ -34,9 +34,10 @@ vim.api.nvim_set_keymap('', '<BS>', '"_d', {})
 -- Language Server Protocol
 
 -- go to definition
-vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>dd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>Telescope lsp_definitions<CR>', { noremap = true, silent = true })
 -- go to type definition
--- vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>Telescope lsp_type_definitions<CR>', { noremap = true, silent = true })
 -- show hover information
 vim.api.nvim_set_keymap('n', '<leader>m', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
