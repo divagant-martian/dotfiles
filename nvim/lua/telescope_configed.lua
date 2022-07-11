@@ -44,18 +44,23 @@ require("telescope").setup {
     },
     lsp_references = {
       layout_strategy = "vertical",
+      layout_config = { scroll_speed = 1 },
     },
     lsp_implementations = {
-        layout_strategy = "vertical",
+      layout_strategy = "vertical",
+      layout_config = { scroll_speed = 1 },
     },
     diagnostics = {
-        layout_strategy = "vertical",
+      layout_strategy = "vertical",
+      layout_config = { scroll_speed = 1 },
     },
     lsp_workspace_symbols = {
-        layout_strategy = "vertical",
+      layout_strategy = "vertical",
+      layout_config = { scroll_speed = 1 },
     },
     lsp_dynamic_workspace_symbols = {
-        layout_strategy = "vertical",
+      layout_strategy = "vertical",
+      layout_config = { scroll_speed = 1 },
     },
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
