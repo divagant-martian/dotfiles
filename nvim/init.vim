@@ -5,7 +5,6 @@ call plug#begin("~/.local/share/nvim/plugged")
     " Directory navigation
     Plug 'justinmk/vim-dirvish'
     " Nobody likes whitespace changes
-    Plug 'ntpeters/vim-better-whitespace'
     " The pair sandwich
     Plug 'machakann/vim-sandwich'
     " Autoclose pairs
@@ -15,7 +14,8 @@ call plug#begin("~/.local/share/nvim/plugged")
     " Default profiles for LSP
     Plug 'neovim/nvim-lspconfig'
     " View git changes in vim
-    Plug 'airblade/vim-gitgutter'
+    Plug 'lewis6991/gitsigns.nvim'
+    " Plug 'airblade/vim-gitgutter'
     " Nice popup window
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
@@ -28,16 +28,15 @@ call plug#begin("~/.local/share/nvim/plugged")
     " Color scheme
     Plug 'sjl/badwolf'
     " Autocomplete
-    Plug 'hrsh7th/nvim-compe'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
     Plug 'voldikss/vim-floaterm'
+    " open file at line and column
+    Plug 'wsdjeg/vim-fetch'
 call plug#end()
-
-" Lexima + compe
-let g:lexima_no_default_rules = v:true
-call lexima#set_default_rules()
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm(lexima#expand('<LT>CR>', 'i'))
 
 " Comments
 map <F2> <Plug>NERDCommenterToggle
@@ -81,15 +80,6 @@ set noswapfile
 set undofile
 set undodir=~/.undodir
 
-" View git changes
-set number
-set signcolumn=no
-let g:gitgutter_highlight_linenrs = 1
-highlight link GitGutterAddLineNr DiffAdd
-highlight link GitGutterChangeLineNr DiffChange
-highlight link GitGutterDeleteLineNr DiffDelete
-highlight link GitGutterChangeDeleteLineNr DiffChange
-
 " Clipboard with the outside world
 set clipboard+=unnamedplus
 
@@ -98,6 +88,7 @@ lua require('autocomplete')
 lua require('telescope_configed')
 lua require('keys')
 lua require('spellsitter').setup()
+lua require('gitsigns_config')
 
 " Buffer navigation
 set hidden

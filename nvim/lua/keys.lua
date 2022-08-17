@@ -13,6 +13,10 @@ vim.api.nvim_command('command! -bar -nargs=* -complete=file -bang Q q<bang>')
 -- unmap s
 vim.api.nvim_set_keymap('', 's', '', {})
 
+-- delete without copy
+vim.api.nvim_set_keymap('', '<BS><BS>', '"_dd', {})
+vim.api.nvim_set_keymap('', '<BS>', '"_d', {})
+
 -- Navigation
 
 -- move to next/previous buffer
@@ -74,3 +78,8 @@ vim.api.nvim_set_keymap('', '<F3>', ':FloatermToggle<CR>', { noremap = true })
 vim.api.nvim_set_var('floaterm_wintype', 'split')
 -- Set height of the terminal
 vim.api.nvim_set_var('floaterm_height', 0.4)
+
+-- Git signs
+vim.api.nvim_set_keymap('', '<leader>b', '<cmd>Gitsigns blame_line<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<leader>gn', '<cmd>Gitsigns next_hunk<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<leader>gp', '<cmd>Gitsigns prev_hunk<CR>', { noremap = true, silent = true })
