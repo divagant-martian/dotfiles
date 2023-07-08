@@ -47,22 +47,26 @@ vim.api.nvim_set_keymap('n', '<leader>i', '<cmd>Telescope lsp_implementations<CR
 -- show hover information
 vim.api.nvim_set_keymap('n', '<leader>m', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
 -- format the current buffer
-vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.format{async = true}<CR>', { noremap = true, silent = true })
 -- show diagnostics for the current line
-vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
 -- rename
 vim.api.nvim_set_keymap('n', '<leader>c', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
 -- next diagnostic in current buffer
-vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
 -- previous diagnostic in current buffer
-vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>a', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>a', '<cmd>Telescope live_grep<CR>', { noremap = true, silent = true })
 
 -- Telescope
 
 -- show references
 vim.api.nvim_set_keymap('n', '<leader>r', '<cmd>Telescope lsp_references<CR>', { noremap = true, silent = true })
+-- calls
+vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>Telescope lsp_incoming_calls<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>o', '<cmd>Telescope lsp_outgoing_calls<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>u', '<cmd>Telescope lsp_document_symbols<CR>', { noremap = true, silent = true })
 -- show diagnostics
 vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>Telescope diagnostics<CR>", {noremap = true, silent = true})
 -- show code actions
@@ -83,3 +87,7 @@ vim.api.nvim_set_var('floaterm_height', 0.4)
 vim.api.nvim_set_keymap('', '<leader>b', '<cmd>Gitsigns blame_line<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('', '<leader>gn', '<cmd>Gitsigns next_hunk<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('', '<leader>gp', '<cmd>Gitsigns prev_hunk<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<leader>gd', '<cmd>Gitsigns preview_hunk<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<leader>gs', '<cmd>Gitsigns stage_hunk<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<leader>gu', '<cmd>Gitsigns undo_stage_hunk<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('', '<leader>gr', '<cmd>Gitsigns reset_hunk<CR>', { noremap = true, silent = true })

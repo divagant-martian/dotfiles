@@ -11,6 +11,7 @@ call plug#begin("~/.local/share/nvim/plugged")
     Plug 'cohama/lexima.vim'
     " Show me tabs
     Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     " Default profiles for LSP
     Plug 'neovim/nvim-lspconfig'
     " View git changes in vim
@@ -26,7 +27,9 @@ call plug#begin("~/.local/share/nvim/plugged")
     " spelling with Treesitter
     Plug 'lewis6991/spellsitter.nvim'
     " Color scheme
-    Plug 'sjl/badwolf'
+    " Plug 'sjl/badwolf'
+    Plug 'rose-pine/neovim'
+    " Plug 'EdenEast/nightfox.nvim' " Vim-Plug
     " Autocomplete
     Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-vsnip'
@@ -36,6 +39,13 @@ call plug#begin("~/.local/share/nvim/plugged")
     Plug 'voldikss/vim-floaterm'
     " open file at line and column
     Plug 'wsdjeg/vim-fetch'
+    " gdb
+    Plug 'puremourning/vimspector'
+    " Lsp status
+    Plug 'mrded/nvim-lsp-notify'
+    Plug 'mfussenegger/nvim-dap'
+    " log highlighting
+    Plug 'mtdl9/vim-log-highlighting'
 call plug#end()
 
 " Comments
@@ -83,10 +93,15 @@ set undodir=~/.undodir
 " Clipboard with the outside world
 set clipboard+=unnamedplus
 
+" Terminal size
+let g:floaterm_height=15
+
 lua require('lsp')
+lua require('dap_configed')
 lua require('autocomplete')
 lua require('telescope_configed')
 lua require('keys')
+lua require('look')
 lua require('spellsitter').setup()
 lua require('gitsigns_config')
 
@@ -104,26 +119,32 @@ inoremap <A-t> <Esc>A<CR>// TODO:
 " Treesitter config
 lua <<EOF
     require'nvim-treesitter.configs'.setup {
-        ensure_installed = {"rust", "comment"},
+        ensure_installed = {"rust", "comment", "go"},
         highlight = {
     enable = true,              -- false will disable the whole extension
     },
 }
 EOF
 
+" abbrv todome
+ab todome TODO(@divma):
+
 " Folding with Treesitter
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-set foldlevelstart=20
+set foldlevelstart=20           
 nmap <Space> za
 
 " Colors. This needs to be at the end, in this order.
-colorscheme badwolf
+colorscheme rose-pine
+
 hi Normal guibg=NONE ctermbg=NONE
+au ColorScheme * hi Normal ctermbg=None
 hi DiffAdd      gui=none    guibg=NONE          guifg=#aaf6b1
 hi DiffChange   gui=none    guibg=NONE          guifg=#e2b870
 hi DiffDelete   gui=none    guibg=NONE          guifg=#ef5350
 hi DiffText     gui=none    guibg=NONE          guifg=fg
+let g:airline_theme='transparent'
 
 autocmd User TelescopePreviewerLoaded setlocal wrap
 autocmd BufNewFile,BufRead *.jrnl set syntax=markdown

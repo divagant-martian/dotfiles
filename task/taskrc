@@ -34,11 +34,18 @@ color.blocking=
 
 report.next.filter=status:pending +UNBLOCKED limit:page
 verbose=blank,footnote,label,new-id,new-uuid,affected,edit,special,project,sync,unwait,recur
-include /home/freyja/Documents/github/dotfiles/task/darkokai.theme
 alias.note=annotate
 #detection=off
 #defaultheight=30
 #defaultwidth=95
 news.version=2.6.0
-context.work.read=+work
-context.work.write=+work due:7d
+context.sigp.read=+sigp
+context.sigp.write=+sigp
+context.n0.read=+n0
+context.n0.write=+n0 due:7d
+context.home.read=+home
+context.home.write=+home
+context.milo.read=+milo
+context.milo.write=+milo
+include /home/divagant-martian/Documents/github/dotfiles/task/darkokai.theme
+context=sigp
