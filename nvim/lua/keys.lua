@@ -1,93 +1,63 @@
--- Basics
+vim.g.clipboard = {
+    name = "xclip",
+    copy  = { ["+"] = { "xclip", "-quiet", "-i", "-selection", "clipboard" },
+              ["*"] = { "xclip", "-quiet", "-i", "-selection", "primary"   } },
+    paste = { ["+"] = { "xclip", "-o", "-selection", "clipboard" },
+              ["*"] = { "xclip", "-o", "-selection", "primary"   } },
+    cache_enabled = 1,
+}
 
--- remap leader
+vim.keymap.set('n', '<F2>', 'gcc', { remap = true })
+vim.keymap.set('x', '<F2>', 'gc',  { remap = true })
+
 vim.g.mapleader = ","
--- remap U to u
-vim.api.nvim_set_keymap('', 'U', 'u', { noremap = true })
--- remap :W to :w
--- FIXME: Remove vimscript (Blocked on https://github.com/neovim/neovim/pull/11613).
-vim.api.nvim_command('command! -bar -nargs=* -complete=file -range=% -bang W <line1>,<line2>write<bang> <args>')
-vim.api.nvim_command('command! -bar -nargs=* -complete=file -range=% -bang Wq <line1>,<line2>wq<bang> <args>')
-vim.api.nvim_command('command! -bar -nargs=* -complete=file -range=% -bang WQ <line1>,<line2>wq<bang> <args>')
-vim.api.nvim_command('command! -bar -nargs=* -complete=file -bang Q q<bang>')
--- unmap s
-vim.api.nvim_set_keymap('', 's', '', {})
+
+vim.keymap.set('', 'U', 'u')
+vim.api.nvim_create_user_command('W',  '<line1>,<line2>write<bang> <args>', {
+    bar = true, nargs = '*', complete = 'file', range = '%', bang = true })
+vim.api.nvim_create_user_command('Wq', '<line1>,<line2>wq<bang> <args>',    {
+    bar = true, nargs = '*', complete = 'file', range = '%', bang = true })
+vim.api.nvim_create_user_command('WQ', '<line1>,<line2>wq<bang> <args>',    {
+    bar = true, nargs = '*', complete = 'file', range = '%', bang = true })
+vim.api.nvim_create_user_command('Q',  'q<bang>',                           {
+    bar = true, bang = true })
+
+vim.keymap.set('', 's', '<Nop>')
 
 -- delete without copy
-vim.api.nvim_set_keymap('', '<BS><BS>', '"_dd', {})
-vim.api.nvim_set_keymap('', '<BS>', '"_d', {})
+vim.keymap.set('', '<BS><BS>', '"_dd')
+vim.keymap.set('', '<BS>',     '"_d')
 
 -- Navigation
+vim.keymap.set('', '<A-Left>',  ':bp<CR>')
+vim.keymap.set('', '<A-Right>', ':bn<CR>')
+vim.keymap.set('', '<A-Del>',   ':bw<CR>')
+vim.keymap.set('', '<A-Up>',    '<C-w><Up>')
+vim.keymap.set('', '<A-Down>',  '<C-w><Down>')
 
--- move to next/previous buffer
-vim.api.nvim_set_keymap('', '<A-Left>', ':bp<CR>', { noremap = true })
-vim.api.nvim_set_keymap('', '<A-Right>', ':bn<CR>', { noremap = true })
--- move to the upper/lower split
-vim.api.nvim_set_keymap('', '<A-Up>', '<C-w><Up>', { noremap = true })
-vim.api.nvim_set_keymap('', '<A-Down>', '<C-w><Down>', { noremap = true })
+-- Diagnostics (global — work without LSP too)
+vim.keymap.set('n', '<leader>l', vim.diagnostic.open_float,                          { silent = true })
+vim.keymap.set('n', '<leader>n', function() vim.diagnostic.jump({ count =  1 }) end, { silent = true })
+vim.keymap.set('n', '<leader>p', function() vim.diagnostic.jump({ count = -1 }) end, { silent = true })
+vim.keymap.set('n', '<leader>w', '<cmd>Telescope diagnostics<CR>',                   { silent = true })
 
-
--- Edition
-
--- use blackhole register for the next action
-vim.api.nvim_set_keymap('', '<leader>b', '"_', {})
--- use backspace to delete to blackhole register
-vim.api.nvim_set_keymap('', '<BS>', '"_d', {})
-
-
--- Language Server Protocol
-
--- go to definition
-vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>x', '<cmd>Telescope lsp_definitions<CR>', { noremap = true, silent = true })
--- go to type definition
-vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>y', '<cmd>Telescope lsp_type_definitions<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>i', '<cmd>Telescope lsp_implementations<CR>', { noremap = true, silent = true })
--- show hover information
-vim.api.nvim_set_keymap('n', '<leader>m', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
--- format the current buffer
-vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.format{async = true}<CR>', { noremap = true, silent = true })
--- show diagnostics for the current line
-vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>lua vim.diagnostic.open_float()<CR>', { noremap = true, silent = true })
--- rename
-vim.api.nvim_set_keymap('n', '<leader>c', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
--- next diagnostic in current buffer
-vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
--- previous diagnostic in current buffer
-vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap('n', '<leader>a', '<cmd>Telescope live_grep<CR>', { noremap = true, silent = true })
-
--- Telescope
-
--- show references
-vim.api.nvim_set_keymap('n', '<leader>r', '<cmd>Telescope lsp_references<CR>', { noremap = true, silent = true })
--- calls
-vim.api.nvim_set_keymap('n', '<leader>k', '<cmd>Telescope lsp_incoming_calls<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>o', '<cmd>Telescope lsp_outgoing_calls<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>u', '<cmd>Telescope lsp_document_symbols<CR>', { noremap = true, silent = true })
--- show diagnostics
-vim.api.nvim_set_keymap('n', '<leader>w', "<cmd>Telescope diagnostics<CR>", {noremap = true, silent = true})
--- show code actions
-vim.api.nvim_set_keymap('n', '<leader><space>', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
--- spell suggestions
-vim.api.nvim_set_keymap('n', '<leader>s', '<cmd>Telescope spell_suggest<CR>', { noremap = true, silent = true })
+-- Telescope (non-LSP)
+vim.keymap.set('n', '<leader>a', '<cmd>Telescope live_grep<CR>',    { silent = true })
+vim.keymap.set('n', '<leader>e', '<cmd>Telescope find_files<CR>',   { silent = true })
+vim.keymap.set('n', '<leader>s', '<cmd>Telescope spell_suggest<CR>', { silent = true })
 
 -- Floating terminal
-vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
-vim.api.nvim_set_keymap('t', '<F3>', '<C-\\><C-n>:FloatermToggle<CR>', { noremap = true })
-vim.api.nvim_set_keymap('', '<F3>', ':FloatermToggle<CR>', { noremap = true })
--- Open the terminal as a split
-vim.api.nvim_set_var('floaterm_wintype', 'split')
--- Set height of the terminal
-vim.api.nvim_set_var('floaterm_height', 0.4)
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+vim.keymap.set('t', '<F3>', '<C-\\><C-n>:FloatermToggle<CR>')
+vim.keymap.set('',  '<F3>', ':FloatermToggle<CR>')
+vim.g.floaterm_wintype = 'split'
+vim.g.floaterm_height  = 0.4
 
 -- Git signs
-vim.api.nvim_set_keymap('', '<leader>b', '<cmd>Gitsigns blame_line<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('', '<leader>gn', '<cmd>Gitsigns next_hunk<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('', '<leader>gp', '<cmd>Gitsigns prev_hunk<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('', '<leader>gd', '<cmd>Gitsigns preview_hunk<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('', '<leader>gs', '<cmd>Gitsigns stage_hunk<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('', '<leader>gu', '<cmd>Gitsigns undo_stage_hunk<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('', '<leader>gr', '<cmd>Gitsigns reset_hunk<CR>', { noremap = true, silent = true })
+vim.keymap.set('', '<leader>b',  '<cmd>Gitsigns blame_line<CR>',    { silent = true })
+vim.keymap.set('', '<leader>gn', '<cmd>Gitsigns next_hunk<CR>',     { silent = true })
+vim.keymap.set('', '<leader>gp', '<cmd>Gitsigns prev_hunk<CR>',     { silent = true })
+vim.keymap.set('', '<leader>gd', '<cmd>Gitsigns preview_hunk<CR>',  { silent = true })
+vim.keymap.set('', '<leader>gs', '<cmd>Gitsigns stage_hunk<CR>',    { silent = true })
+vim.keymap.set('', '<leader>gu', '<cmd>Gitsigns undo_stage_hunk<CR>', { silent = true })
+vim.keymap.set('', '<leader>gr', '<cmd>Gitsigns reset_hunk<CR>',    { silent = true })

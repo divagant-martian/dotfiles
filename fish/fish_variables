@@ -1,0 +1,5 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR MANPAGER:bat\x20\x2dl\x20man
+SETUVAR __fish_initialized:4300
+SETUVAR fish_greeting:

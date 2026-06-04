@@ -13,10 +13,10 @@ require('rose-pine').setup({
 		link = 'iris',
 		punctuation = 'subtle',
 
-		error = 'love',
-		hint = 'iris',
-		info = 'foam',
-		warn = 'gold',
+        error = 'love',
+        hint = 'iris',
+        info = 'foam',
+        warn = 'gold',
 
 		headings = {
 			h1 = 'iris',
@@ -33,7 +33,11 @@ require('rose-pine').setup({
 	-- Change specific vim highlight groups
 	highlight_groups = {
 		ColorColumn = { bg = 'rose' },
-        DiagnosticUnderlineHint = { bg = 'rose' },
+        DiagnosticWarn = { bg = 'gold', blend=50 },
+        DiagnosticUnderlineError = { bg = 'love', blend = 10, undercurl = false },
+        DiagnosticUnderlineWarn = { bg = 'gold', blend = 10, undercurl = false },
+        DiagnosticUnderlineInfo = { bg = 'foam', blend = 10, undercurl = false },
+        DiagnosticUnderlineHint = { bg = 'iris', blend = 10, undercurl = false }
 	}
 })
 
