@@ -2,13 +2,22 @@ require('rose-pine').setup({
 	--- @usage 'main' | 'moon'
     variant = "auto",
     dark_variant = "moon",
-	disable_background = true,
-	disable_float_background = true,
-	disable_italics = true,
+
+    styles = {
+        italic = false,
+    },
+
+    before_highlight = function(group, highlight, palette)
+        if vim.o.background == 'dark' then
+            if group == 'Normal' or group == 'NormalFloat' then
+                highlight.bg = 'NONE'
+            end
+        end
+    end,
 
     palette = {
         dawn = {
-            base = "#faf4ee", -- one shade different
+            base = "#fdf8f4",
         },
     },
 

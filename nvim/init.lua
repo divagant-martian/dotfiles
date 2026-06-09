@@ -33,17 +33,8 @@ require('autocomplete')
 require('telescope_configed')
 require('keys')
 
--- Colors. look.lua calls colorscheme, so must come before highlight overrides.
-vim.api.nvim_create_autocmd('ColorScheme', {
-    callback = function()
-        vim.api.nvim_set_hl(0, 'Normal', { ctermbg = 'NONE' })
-    end,
-})
 require('look')
 require('gitsigns_config')
-
--- Highlight overrides (after colorscheme is applied)
-vim.api.nvim_set_hl(0, 'Normal',     { bg = 'NONE', ctermbg = 'NONE' })
 vim.api.nvim_set_hl(0, 'DiffAdd',    { bg = 'NONE', fg = '#aaf6b1' })
 vim.api.nvim_set_hl(0, 'DiffChange', { bg = 'NONE', fg = '#e2b870' })
 vim.api.nvim_set_hl(0, 'DiffDelete', { bg = 'NONE', fg = '#ef5350' })
