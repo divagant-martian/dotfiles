@@ -6,6 +6,12 @@ require('rose-pine').setup({
 	disable_float_background = true,
 	disable_italics = true,
 
+    palette = {
+        dawn = {
+            base = "#faf4ee", -- one shade different
+        },
+    },
+
 	--- @usage string hex value or named color from rosepinetheme.com/palette
 	groups = {
 		background = 'base',
