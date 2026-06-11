@@ -1,0 +1,40 @@
+{
+      "frame": "$base",
+      "toolbar": "$surface",
+      "toolbar_text": "$text",
+
+      "tab_background_text": "$text",
+      "tab_selected": "$overlay",
+
+      "bookmark_text": "$text",
+
+      "icons": "$subtle",
+      "icons_attention": "$gold",
+
+      "tab_line": "$foam",
+
+      "popup": "$surface",
+      "popup_text": "$text",
+      "popup_border": "$highlightMed",
+
+      "sidebar": "$base",
+      "sidebar_text": "$text",
+      "sidebar_border": "$highlightMed",
+
+      "toolbar_field": "$overlay",
+      "toolbar_field_text": "$text",
+      "toolbar_field_border": "$highlightMed",
+
+      "toolbar_field_focus": "$highlightHigh",
+      "toolbar_field_text_focus": "$text",
+      "toolbar_field_border_focus": "$foam",
+
+      "toolbar_top_separator": "$highlightMed",
+      "toolbar_bottom_separator": "$highlightMed",
+
+      "button_background_hover": "$highlightMed",
+      "button_background_active": "$highlightHigh",
+
+      "ntp_background": "$base",
+      "ntp_text": "$text"
+    }

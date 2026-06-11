@@ -1,0 +1,70 @@
+{
+    "manifest_version": 2,
+    "name": "Rosé Pine Firefox Auto",
+    "version": "1.0",
+
+    "theme": {
+        "colors": {
+            "frame": "#faf4ed",
+            "toolbar": "#fffaf3",
+            "toolbar_text": "#575279",
+            "tab_background_text": "#575279",
+            "tab_selected": "#f2e9e1",
+            "bookmark_text": "#575279",
+            "icons": "#797593",
+            "icons_attention": "#ea9d34",
+            "tab_line": "#56949f",
+            "popup": "#fffaf3",
+            "popup_text": "#575279",
+            "popup_border": "#dfdad9",
+            "sidebar": "#faf4ed",
+            "sidebar_text": "#575279",
+            "sidebar_border": "#dfdad9",
+            "toolbar_field": "#f2e9e1",
+            "toolbar_field_text": "#575279",
+            "toolbar_field_border": "#dfdad9",
+            "toolbar_field_focus": "#cecacd",
+            "toolbar_field_text_focus": "#575279",
+            "toolbar_field_border_focus": "#56949f",
+            "toolbar_top_separator": "#dfdad9",
+            "toolbar_bottom_separator": "#dfdad9",
+            "button_background_hover": "#dfdad9",
+            "button_background_active": "#cecacd",
+            "ntp_background": "#faf4ed",
+            "ntp_text": "#575279"
+        }
+
+    },
+
+    "dark_theme": {
+        "colors": {
+            "frame": "#232136",
+            "toolbar": "#2a273f",
+            "toolbar_text": "#e0def4",
+            "tab_background_text": "#e0def4",
+            "tab_selected": "#393552",
+            "bookmark_text": "#e0def4",
+            "icons": "#908caa",
+            "icons_attention": "#f6c177",
+            "tab_line": "#9ccfd8",
+            "popup": "#2a273f",
+            "popup_text": "#e0def4",
+            "popup_border": "#44415a",
+            "sidebar": "#232136",
+            "sidebar_text": "#e0def4",
+            "sidebar_border": "#44415a",
+            "toolbar_field": "#393552",
+            "toolbar_field_text": "#e0def4",
+            "toolbar_field_border": "#44415a",
+            "toolbar_field_focus": "#56526e",
+            "toolbar_field_text_focus": "#e0def4",
+            "toolbar_field_border_focus": "#9ccfd8",
+            "toolbar_top_separator": "#44415a",
+            "toolbar_bottom_separator": "#44415a",
+            "button_background_hover": "#44415a",
+            "button_background_active": "#56526e",
+            "ntp_background": "#232136",
+            "ntp_text": "#e0def4"
+        }
+    }
+}
