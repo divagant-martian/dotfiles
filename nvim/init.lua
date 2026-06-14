@@ -35,10 +35,6 @@ require('keys')
 
 require('look')
 require('gitsigns_config')
-vim.api.nvim_set_hl(0, 'DiffAdd',    { bg = 'NONE', fg = '#aaf6b1' })
-vim.api.nvim_set_hl(0, 'DiffChange', { bg = 'NONE', fg = '#e2b870' })
-vim.api.nvim_set_hl(0, 'DiffDelete', { bg = 'NONE', fg = '#ef5350' })
-vim.api.nvim_set_hl(0, 'DiffText',   { bg = 'NONE' })
 
 -- TODO shortcuts
 vim.keymap.set('n', '<A-t>', 'A<CR>// TODO:')

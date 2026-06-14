@@ -5,6 +5,23 @@ require('rose-pine').setup({
 
     styles = {
         italic = false,
+        bold = true,
+    },
+
+    highlight_groups = {
+        DiffAdd = { bg = "foam", fg = "base", blend = 90 },
+        DiffDelete = { bg = "love", fg = "base", blend = 90 },
+        DiffChange = { bg = "iris", fg = "base", blend = 92 },
+        DiffText = { bg = "gold", fg = "base", blend = 85 },
+
+        GitSignsAdd = { fg = "foam" },
+        GitSignsDelete = { fg = "love" },
+        GitSignsChange = { fg = "iris" },
+
+        -- Optional: used by some GitSigns features
+        GitSignsChangedelete = { fg = "gold" },
+        GitSignsTopdelete = { fg = "love" },
+        GitSignsUntracked = { fg = "foam" },
     },
 
     before_highlight = function(group, highlight, palette)
@@ -21,41 +38,6 @@ require('rose-pine').setup({
         },
     },
 
-	--- @usage string hex value or named color from rosepinetheme.com/palette
-	groups = {
-		background = 'base',
-		panel = 'surface',
-		border = 'highlight_med',
-		comment = 'muted',
-		link = 'iris',
-		punctuation = 'subtle',
-
-        error = 'love',
-        hint = 'iris',
-        info = 'foam',
-        warn = 'gold',
-
-		headings = {
-			h1 = 'iris',
-			h2 = 'foam',
-			h3 = 'rose',
-			h4 = 'gold',
-			h5 = 'pine',
-			h6 = 'foam',
-		}
-		-- or set all headings at once
-		-- headings = 'background subtle'
-	},
-
-	-- Change specific vim highlight groups
-	highlight_groups = {
-		ColorColumn = { bg = 'rose' },
-        DiagnosticWarn = { bg = 'gold', blend=50 },
-        DiagnosticUnderlineError = { bg = 'love', blend = 10, undercurl = false },
-        DiagnosticUnderlineWarn = { bg = 'gold', blend = 10, undercurl = false },
-        DiagnosticUnderlineInfo = { bg = 'foam', blend = 10, undercurl = false },
-        DiagnosticUnderlineHint = { bg = 'iris', blend = 10, undercurl = false }
-	}
 })
 
 -- set colorscheme after options

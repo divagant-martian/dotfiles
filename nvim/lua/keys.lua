@@ -34,6 +34,8 @@ vim.keymap.set('', '<A-Right>', ':bn<CR>')
 vim.keymap.set('', '<A-Del>',   ':bw<CR>')
 vim.keymap.set('', '<A-Up>',    '<C-w><Up>')
 vim.keymap.set('', '<A-Down>',  '<C-w><Down>')
+vim.keymap.set('', '<C-S-A-Left>',  '<C-w>h')
+vim.keymap.set('', '<C-S-A-Right>', '<C-w>l')
 
 -- Diagnostics (global — work without LSP too)
 vim.keymap.set('n', '<leader>l', vim.diagnostic.open_float,                          { silent = true })

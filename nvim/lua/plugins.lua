@@ -64,4 +64,9 @@ require("lazy").setup({
     "wsdjeg/vim-fetch",
     "mfussenegger/nvim-dap",
     "mtdl9/vim-log-highlighting",
+    {
+        "sindrets/diffview.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = true,
+    },
 })
