@@ -47,5 +47,5 @@ context.home.read=+home
 context.home.write=+home
 context.milo.read=+milo
 context.milo.write=+milo
-include /home/divagant-martian/Documents/github/dotfiles/task/darkokai.theme
+include /home/divagant-martian/Workspace/dotfiles/task/darkokai.theme
 context=sigp
