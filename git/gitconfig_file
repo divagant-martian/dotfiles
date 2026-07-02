@@ -1,0 +1,45 @@
+[user]
+    signingkey = 4B375E8F7030F401
+    signingkey = 1BAE5E01126680FE
+	email = divma@protonmail.com
+	name = Diva Martínez
+[commit]
+	gpgsign = true
+[alias]
+	logline = "log --graph --pretty=format:'%C(#ef476f)%h%Creset -%C(#ffd166)%d%Creset %s %C(#06d6a0)(%cr) %C(#118ab2)<%an>%Creset' --abbrev-commit"
+	st = status
+	comp = diff --compact-summary
+    conflicts = diff --name-only --diff-filter=U --relative
+    track = !sh -c 'git fetch $1 $2 && git checkout $2' -
+	list = diff --name-only --relative
+	vdiff = "!f() { nvim -c \"DiffviewOpen $*\"; }; f"
+	showtool = "!showci () { rev=${1:-HEAD}; git difftool -t meld $rev~1 $rev -d .; }; showci $1"
+    vshow = "!f() { rev=${1:-HEAD}; nvim -c \"DiffviewOpen $rev~1..$rev\"; }; f"
+    amend = commit --amend --no-edit
+    m = "merge --no-edit"
+[core]
+	editor = nvim
+	excludesFile = ~/.gitignore
+[safe]
+	directory = /home/divagant-martian/Workspace/wiroh
+[diff]
+	tool = diffview
+[difftool]
+	prompt = false
+[difftool "diffview"]
+	cmd = nvim -n -c "DiffviewOpen -- $MERGED"
+	trustExitCode = false
+[difftool "meld"]
+	cmd = meld -n "$LOCAL" "$REMOTE" || true
+	trustExitCode = false
+[mergetool "diffview"]
+	cmd = nvim -n -c "DiffviewOpen MERGE_HEAD -- $MERGED" "$MERGED"
+	trustExitCode = false
+[mergetool "meld"]
+	cmd = meld -n "$LOCAL" "$MERGED" "$REMOTE"
+[merge]
+    tool = diffview
+    prompt = false
+[mergetool "meld"]
+    cmd = meld -n "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+    trustExitCode = false
