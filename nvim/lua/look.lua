@@ -9,19 +9,14 @@ require('rose-pine').setup({
     },
 
     highlight_groups = {
-        DiffAdd = { bg = "foam", fg = "base", blend = 90 },
-        DiffDelete = { bg = "love", fg = "base", blend = 90 },
-        DiffChange = { bg = "iris", fg = "base", blend = 92 },
-        DiffText = { bg = "gold", fg = "base", blend = 85 },
-
-        GitSignsAdd = { fg = "foam" },
-        GitSignsDelete = { fg = "love" },
-        GitSignsChange = { fg = "iris" },
-
-        -- Optional: used by some GitSigns features
-        GitSignsChangedelete = { fg = "gold" },
-        GitSignsTopdelete = { fg = "love" },
-        GitSignsUntracked = { fg = "foam" },
+        -- bg-only: no `fg` so treesitter/syntax colors still show through
+        -- the tint. blend is rose-pine's own mix toward `palette.base`
+        -- (higher = closer to the full accent color), not nvim's native
+        -- float-only blend.
+        DiffAdd = { bg = "foam", blend = 35 },
+        DiffDelete = { bg = "love", blend = 35 },
+        DiffChange = { bg = "rose", blend = 35 },
+        DiffText = { bg = "gold", blend = 55 },
     },
 
     before_highlight = function(group, highlight, palette)
